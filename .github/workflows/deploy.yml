@@ -33,9 +33,9 @@ jobs:
 
     - name: Login no Container Registry
       run: |
-        docker login https://${{ env.REGISTRY }} \
-          -u ${{ secrets.MGC_REGISTRY_USER }} \
-          -p ${{ secrets.MGC_REGISTRY_PASSWORD }}
+        docker login "https://${{ env.REGISTRY }}" \
+          -u "${{ secrets.MGC_REGISTRY_USER }}" \
+          -p "${{ secrets.MGC_REGISTRY_PASSWORD }}"
 
     - name: Build e push da imagem
       run: |
