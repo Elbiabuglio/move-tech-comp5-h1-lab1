@@ -31,13 +31,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Debug tamanho das credenciais
+    - name: Login no Container Registry
       run: |
-        echo "Tamanho do usuário: ${#MGC_USER}"
-        echo "Tamanho da senha: ${#MGC_PASS}"
-      env:
-        MGC_USER: ${{ secrets.MGC_REGISTRY_USER }}
-        MGC_PASS: ${{ secrets.MGC_REGISTRY_PASSWORD }}
+        docker login https://${{ env.REGISTRY }} \
+          -u ${{ secrets.MGC_REGISTRY_USER }} \
+          -p ${{ secrets.MGC_REGISTRY_PASSWORD }}
 
     - name: Build e push da imagem
       run: |
